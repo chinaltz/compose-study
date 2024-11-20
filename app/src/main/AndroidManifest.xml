@@ -13,6 +13,12 @@
         android:theme="@style/Theme.ComposeKotlinStudy"
         tools:targetApi="31">
         <activity
+            android:name=".ui.activity.ComposeTextActivity"
+            android:exported="false"
+            android:label="@string/title_activity_comose_text"
+            android:theme="@style/Theme.ComposeKotlinStudy" />
+
+        <activity
             android:name=".MainActivity"
             android:exported="true"
             android:label="@string/app_name"

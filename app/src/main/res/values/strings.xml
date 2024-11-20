@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">ComposeKotlinStudy</string>
+    <string name="title_activity_comose_text">ComoseTextActivity</string>
 </resources>

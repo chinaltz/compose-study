@@ -1,5 +1,4 @@
-
-package com.example.composekotlinstudy
+package com.example.composekotlinstudy.ui.activity
 
 import android.content.Intent
 import android.os.Bundle
@@ -7,42 +6,32 @@ import android.widget.Toast
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
-import androidx.compose.foundation.layout.Box
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
-import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.text.ClickableText
-import androidx.compose.foundation.verticalScroll
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.text.AnnotatedString
-import androidx.compose.ui.text.SpanStyle
-import androidx.compose.ui.text.buildAnnotatedString
-import androidx.compose.ui.text.style.TextDecoration
-import androidx.compose.ui.text.withStyle
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.core.view.WindowCompat
-import com.example.composekotlinstudy.ui.activity.ComposeTextActivity
 import com.example.composekotlinstudy.ui.theme.ComposeKotlinStudyTheme
 
-class MainActivity : ComponentActivity() {
+class ComposeTextActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
-        val context = this
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
+
         // 适配顶部导航栏
         WindowCompat.setDecorFitsSystemWindows(window, false)
         setContent {
             ComposeKotlinStudyTheme {
                 Scaffold(modifier = Modifier.fillMaxSize()) { innerPadding ->
-                    studyMenus(
-                        modifier = Modifier.padding(innerPadding)
-                    )
+                    ComposeUITextSample(modifier = Modifier.padding(innerPadding))
                 }
             }
         }
@@ -50,36 +39,45 @@ class MainActivity : ComponentActivity() {
 }
 
 @Composable
-fun Greeting(name: String, modifier: Modifier = Modifier) {
+fun Greeting2(name: String) {
     Text(
-        text = "Hello $name!",
-        modifier = modifier
+        text = "Hello $name!"
     )
 }
 
+@Preview(showBackground = true)
+@Composable
+fun GreetingPreview2() {
+    ComposeKotlinStudyTheme {
+        Greeting2("Android")
+    }
+}
+
 
 @Composable
-fun  studyMenus(modifier: Modifier = Modifier){
-    val context = LocalContext.current
+fun ComposeUITextSample(modifier: Modifier = Modifier) {
+
     Column(modifier = modifier) {
+// 可以点击 的文本
+        val context = LocalContext.current
         ClickableText(
-            text = AnnotatedString("Text 基本使用")
-            ,
+            text = AnnotatedString("ClickableText  基本使用"),
             onClick = { offset ->
                 // Handle click event here
-                context.startActivity(Intent(context, ComposeTextActivity::class.java))
+                Toast.makeText(context, "ClickableText 被点击", Toast.LENGTH_SHORT).show()
 
             }
         )
-        Text(text = "Column 基础")
 
-    }
+// 普通文本的点击 事件
+        Text(
+            text = "普通文本 点击",
+            modifier = Modifier.clickable {
+                // 点击时随机修改字体颜色
+                Toast.makeText(context, "普通文本 Text被点击", Toast.LENGTH_SHORT).show()
+            }
 
-}
-@Preview(showBackground = true)
-@Composable
-fun GreetingPreview() {
-    ComposeKotlinStudyTheme {
-        studyMenus()
+        )
+
     }
 }
