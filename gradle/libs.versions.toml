@@ -12,8 +12,11 @@ appcompat = "1.6.1"
 material = "1.10.0"
 activity = "1.8.0"
 constraintlayout = "2.1.4"
+nav_version = "2.9.3"
+
 
 [libraries]
+androidx-navigation-compose= { group = "androidx.navigation", name = "navigation-compose", version.ref = "nav_version" }
 androidx-core-ktx = { group = "androidx.core", name = "core-ktx", version.ref = "coreKtx" }
 junit = { group = "junit", name = "junit", version.ref = "junit" }
 androidx-junit = { group = "androidx.test.ext", name = "junit", version.ref = "junitVersion" }

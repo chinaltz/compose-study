@@ -67,7 +67,7 @@ fun ComposeUITextSample(modifier: Modifier = Modifier) {
         )
 // 普通文本的点击 事件
         Text(
-            text = "普通文本 点击",
+            text = "普通文本 2222点击",
             modifier = Modifier.clickable {
                 // 点击时随机修改字体颜色
                 Toast.makeText(context, "普通文本 Text被点击", Toast.LENGTH_SHORT).show()
